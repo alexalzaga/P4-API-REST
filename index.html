@@ -60,9 +60,33 @@
 	</header>
 	<div class="buffer"></div>
 	<div class="container cont-1 border border-3">
+		<div class="btn-group" role="group" id="gen-select">
+		  <input type="radio" class="btn-check" name="btnradio" id="btnGen1" autocomplete="off" checked>
+		  <label class="btn btn-outline-primary" for="btnGen1">Gen 1</label>
+
+		  <input type="radio" class="btn-check" name="btnradio" id="btnGen2" autocomplete="off">
+		  <label class="btn btn-outline-primary" for="btnGen2">Gen 2</label>
+
+		  <input type="radio" class="btn-check" name="btnradio" id="btnGen3" autocomplete="off">
+		  <label class="btn btn-outline-primary" for="btnGen3">Gen 3</label>
+
+		  <input type="radio" class="btn-check" name="btnradio" id="btnGen4" autocomplete="off">
+		  <label class="btn btn-outline-primary" for="btnGen4">Gen 4</label>
+
+		  <input type="radio" class="btn-check" name="btnradio" id="btnGen5" autocomplete="off">
+		  <label class="btn btn-outline-primary" for="btnGen5">Gen 5</label>
+
+		  <input type="radio" class="btn-check" name="btnradio" id="btnGen6" autocomplete="off">
+		  <label class="btn btn-outline-primary" for="btnGen6">Gen 6</label>
+		</div>
 		<form class="d-flex" id="search-form">
-        	<button class="btn btn-outline-light bg-primary" type="submit">Lanzar Fetch</button>
+        	<button class="btn btn-outline-light bg-primary" type="submit">Buscar</button>
     	</form>
+    	<div class="d-flex justify-content-center">
+	    	<div class="spinner-border text-primary visually-hidden" role="status" id="loading">
+			  <span class="visually-hidden">Loading...</span>
+			</div>
+		</div>
 	</div>
 	<br>
     <div class="container">
@@ -85,6 +109,20 @@
 	    </tbody>
 	  </table>
 	</div>
+	<nav aria-label="Page navigation" class="pag" id="pagination">
+	  <ul class="pagination justify-content-center">
+	    <li class="page-item" id="previous">
+	    	<form class="d-flex" id="previous">
+	    		<button class="btn btn-outline-light bg-primary disabled" id="btn-previous" type="submit">Previous</button>
+    		</form>  
+	    </li>
+	    <li class="page-item" id="next">
+	    	<form class="d-flex" id="next">
+	      		<button class="btn btn-outline-light bg-primary" id="btn-next" type="submit">Next</button>
+	      	</form>
+	    </li>
+	  </ul>
+	</nav>
 
 	<script src="js/search_alt.js"></script>
 </body>
