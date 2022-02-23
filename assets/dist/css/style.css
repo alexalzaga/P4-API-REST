@@ -1,0 +1,43 @@
+html, body {
+	background-image: url("https://i.pinimg.com/originals/5e/fc/94/5efc94c50eb23675465c902b29330b38.png");
+	background-repeat: repeat repeat;
+	background-position: left;
+}
+
+.logo {
+	width: 30%;
+	height: auto;
+	position: absolute;
+	left: 35%;
+	top: 5px;
+}
+
+.head {
+	background-color:#f0c022;
+	width: 20%;
+	left: 41%;
+	position: relative;
+	height: 50px;
+	top: 130px;
+	border-color: #195fb5 !important;
+}
+
+.buffer {
+	padding-top: 160px
+}
+
+h1 {
+	font-family: 'Indie Flower';
+	text-align: center;
+}
+
+.cont-1, .res {
+	border-color: #195fb5 !important;
+	background-color: #f7f4eb;
+	border-collapse:separate;
+    border-radius:12px !important;
+}
+
+.res {
+	visibility: hidden;
+}

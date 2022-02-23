@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es"> 
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.80.0">
+	<title>Pokémon Search Tool</title>
+	    <!-- Bootstrap core CSS -->
+	<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/dist/css/style.css" rel="stylesheet">
+
+		<!-- carga de custom font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>	
+	<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+
+	<style type="text/css">
+		body {
+		  
+		  font-family: Verdana;
+		  max-width: 100%;
+    	  overflow-x: hidden;
+		}
+
+		p {
+			text-align: left;
+		}
+
+		.centered {
+			position: absolute;
+			top: 40%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			color: #3470d9;
+			text-align: center;
+			width: 100%;
+			font-size: 260%;
+			font-style: italic;
+		}
+
+		/*https://www.educative.io/edpresso/how-to-crop-an-image-in-css*/
+		.cropped {
+		    width: 100%; /* width of container */
+		    height: 520px; /* height of container */
+		    object-fit: cover;
+		}
+
+
+
+	</style>
+</head>
+<body>
+	<img class="logo" src="resources/logo.png">
+	<header class="head rounded-pill border border-3">
+		<h1>
+			Search Tool
+		</h1>
+	</header>
+	<div class="buffer"></div>
+	<div class="container cont-1 border border-3">
+		<form class="d-flex" id="search-form">
+        	<button class="btn btn-outline-light bg-primary" type="submit">Lanzar Fetch</button>
+    	</form>
+	</div>
+	<br>
+    <div class="container">
+	  <table class="table table-default border border-3 res" id="tabla">
+	    <thead>
+	    	<tr>
+	    		<th></th>
+	    		<th>Nombre</th>
+	    		<th>Tipo/s</th>
+	    		<th></th>
+	    		<th>HP</th>
+	    		<th>Ataque</th>
+	    		<th>Defensa</th>
+	    		<th>Ataque Esp.</th>
+	    		<th>Defensa Esp.</th>
+	    		<th>Velocidad</th>
+	    	</tr>
+	    </thead>
+	    <tbody id="data" style="border-collapse: collapse;">
+	    </tbody>
+	  </table>
+	</div>
+
+	<script src="js/search_alt.js"></script>
+</body>
+</html>
+
+<!--href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"-->
