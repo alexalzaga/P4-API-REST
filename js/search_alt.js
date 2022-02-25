@@ -92,6 +92,8 @@ cButton.addEventListener("submit",function(e){
 	gen4 = document.getElementById('btnGen4').checked;
 	gen5 = document.getElementById('btnGen5').checked;
 	gen6 = document.getElementById('btnGen6').checked;
+	gen7 = document.getElementById('btnGen7').checked;
+	gen8 = document.getElementById('btnGen8').checked;
 	var genSelected = selectedGen();
 	var url_ini = "https://pokeapi.co/api/v2/generation/generation-"+genSelected
 	fetch(url_ini, {
@@ -180,5 +182,7 @@ function selectedGen() {
 	else if(gen4){return 'iv'}
 	else if(gen5){return 'v'}
 	else if(gen6){return 'vi'}
+	else if(gen7){return 'vii'}
+	else if(gen8){return 'viii'}
 }
 

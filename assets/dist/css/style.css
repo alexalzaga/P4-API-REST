@@ -41,3 +41,9 @@ h1 {
 .res, .pag {
 	visibility: hidden;
 }
+
+thead {
+	position: sticky;
+	top: 0;
+	background-color: #f7f4eb;
+}
