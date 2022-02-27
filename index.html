@@ -26,31 +26,10 @@
 		p {
 			text-align: left;
 		}
-
-		.centered {
-			position: absolute;
-			top: 40%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			color: #3470d9;
-			text-align: center;
-			width: 100%;
-			font-size: 260%;
-			font-style: italic;
-		}
-
-		/*https://www.educative.io/edpresso/how-to-crop-an-image-in-css*/
-		.cropped {
-		    width: 100%; /* width of container */
-		    height: 520px; /* height of container */
-		    object-fit: cover;
-		}
-
-
-
 	</style>
 </head>
 <body>
+	<!--Logo-->
 	<img class="logo" src="resources/logo.png">
 	<header class="head rounded-pill border border-3">
 		<h1>
@@ -58,6 +37,7 @@
 		</h1>
 	</header>
 	<div class="buffer"></div>
+	<!--Menu seleccion gen + busqueda-->
 	<div class="container cont-1 border border-3 mb-2 text-center">
 		<div class="btn-group my-2" role="group" id="gen-select">
 		  <input type="radio" class="btn-check" name="btnradio" id="btnGen1" autocomplete="off" checked>
@@ -94,6 +74,7 @@
 		</div>
 	</div>
 	<br>
+	<!--Tabla, sin rows rellenadas porque se hace en la busqueda-->
     <div class="container">
 	  <table class="table table-default border border-3 res" id="tabla">
 	    <thead>
@@ -132,5 +113,3 @@
 	<script src="js/search_alt.js"></script>
 </body>
 </html>
-
-<!--href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"-->

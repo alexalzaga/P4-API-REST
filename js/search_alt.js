@@ -1,8 +1,10 @@
-const cButton = document.getElementById("search-form");
-const nextButton = document.getElementById("next");
+const cButton = document.getElementById("search-form"); //boton buscar
+//botones paginacion
+const nextButton = document.getElementById("next"); 
 const previousButton = document.getElementById("previous");
 const nextBtn = document.querySelector("#btn-next");
 const prevBtn = document.querySelector("#btn-previous");
+//spinner
 const loading = document.querySelector("#loading");
 var pokemon = [];
 var datos = [];
@@ -17,20 +19,21 @@ var gen6;
 var disabled_p = true;
 var disabled_n = false;
 
-function comparar ( a, b ){ return a - b; }
+function comparar ( a, b ){ return a - b; } //usada para ordenar el vector de indices
 
+//funcion de la busqueda, devuelve y muestra en la tabla los datos de 20 pokemon, los cuales son elegidos segun el vector de indices
 function busqueda (index, start) {
 	var urls = [];
-	document.getElementById('tabla').style.visibility = "hidden";
+	document.getElementById('tabla').style.visibility = "hidden"; //ocultamos la tabla mientras se busca
 	document.getElementById('pagination').style.visibility = "hidden";
 	for (var i = 0; i < (index.length-start) && i < 20; i++) { //max 20 resultados
         	var pokeData = "https://pokeapi.co/api/v2/pokemon/" + index[i+start];
-          	urls[i] = pokeData;
+          	urls[i] = pokeData; //generamos vector de urls a las que vamos a hacer fetch
         }
 
-        let requests = urls.map(url=>fetch(url));
+        let requests = urls.map(url=>fetch(url)); //vector de fetchs
 
-        Promise.all(requests)
+        Promise.all(requests) //esperamos a que se confirmen todos
 			.then(responses => {
 				for(let response of responses) {
 			      console.log("fetch2OK");
@@ -40,12 +43,13 @@ function busqueda (index, start) {
 
 			.then(responses => Promise.all(responses.map(r => r.json())))
 
-			.then(r2 => {
+			//una vez confirmado las busquedas y almacenados los resultados procedemos a la operacion de muestra de resultados
+			.then(r2 => {	
 				datos=r2;
 				if (datos.length > 0) {
 		          var temp = '';
-		          document.getElementById('data').innerHTML = temp;
-		          for (var i = 0; i < datos.length; i++) {
+		          document.getElementById('data').innerHTML = temp; //vaciamos las rows previas
+		          for (var i = 0; i < datos.length; i++) { // rellenamos fila por fila
 		          	var imagen = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/';
 		          	imagen += datos[i].id;
 		          	imagen += '.png';
@@ -65,9 +69,10 @@ function busqueda (index, start) {
 		            temp += '<td>' + datos[i].stats[4].base_stat + '</td>';
 		            temp += '<td>' + datos[i].stats[5].base_stat + '</td></tr>';
         		}
-        		 document.getElementById('data').innerHTML = temp;
+        		 document.getElementById('data').innerHTML = temp; // metemos las filas ya modificadas
         		 //metemos un pequeño retardo para asegurarnos de que las imagenes se cargan al completo antes de mostrar
         		 setTimeout(function(){
+        		 	//tras este retardo, escondemos spinner y mostramos tabla
 				    document.getElementById('tabla').style.visibility = "visible";
 				    document.getElementById('pagination').style.visibility = "visible";
 				    loading.classList.add("visually-hidden");
@@ -76,16 +81,18 @@ function busqueda (index, start) {
       	})
 }
 
-
+//funcion de la busqueda de una generacion de pokemon, de la que se quiere conseguir el vector de indices de pokemons introducidos en X generacion. 
+//Estos indices son identificadores unicos de cada pokemon en esta API
 cButton.addEventListener("submit",function(e){
 	console.log("boton funciona")
 	e.preventDefault();
-	start = 0;
+	start = 0; //variable usada para la paginacion: indica a partir de que posicion del vector se empieza a buscar en la funcion busqueda
 	disabled_p = true;
 	disabled_n = false;
 	prevBtn.classList.add("disabled");
 	nextBtn.classList.remove("disabled");
 	loading.classList.remove("visually-hidden");
+	//comprobamos que gen se ha elegido
 	gen1 = document.getElementById('btnGen1').checked;
 	gen2 = document.getElementById('btnGen2').checked;
 	gen3 = document.getElementById('btnGen3').checked;
@@ -115,6 +122,7 @@ cButton.addEventListener("submit",function(e){
 	})
 
 	.then(r => {
+		//sacamos los indices: este vector de indices queda intocable hasta que se haga otra busqueda (paginacion no va a reiniciar/cambiar este vector)
 		pokemon=r;
 		index = [];
 		for (var i = 0; i < pokemon.pokemon_species.length; i++) {
@@ -122,8 +130,8 @@ cButton.addEventListener("submit",function(e){
           	index[i] = parts[1].substr(0,parts[1].length - 1);
           }
 
-        index.sort(comparar);
-        busqueda(index,start);     
+        index.sort(comparar); //ordenamos
+        busqueda(index,start); //mostrado de 20 primeros resultados    
     })      	   
 })
 
@@ -135,7 +143,7 @@ nextButton.addEventListener("submit",function(e){
 	if (start == -1) {
 		return;
 	} else {
-		start += 20;
+		start += 20; //si pulasmos next (page) sumamos 20 a la variable start, por tanto mostrara la tabla los 20 siguientes resultados a los anteriores
 		busqueda(index,start);
 		if(disabled_p) {
 			prevBtn.classList.remove("disabled");
@@ -156,7 +164,7 @@ previousButton.addEventListener("submit",function(e){
 	if (start == -1) {
 		return;
 	} else {
-		start -= 20;
+		start -= 20; //inverso a next, muestra los 20 previos
 		busqueda(index,start); 
 		if (start <= 0) {
 			prevBtn.classList.add("disabled");
